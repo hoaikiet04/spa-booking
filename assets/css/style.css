@@ -1,0 +1,110 @@
+/* ============== Trang chủ ================= */
+
+body {
+  font-family: "Roboto Slab", serif;
+  background: #f8f6f3;
+  color: #333;
+}
+
+/* ============== Navbar ================= */
+.navbar {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.navbar-brand {
+  font-weight: 700;
+  color: #e6a756 !important;
+  letter-spacing: 1px;
+  font-size: 1.4rem;
+}
+.navbar-brand img {
+  height: 80px;
+  vertical-align: middle;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-nav .nav-link {
+  color: #333;
+  font-weight: 500;
+  margin-left: 1rem;
+  transition: color 0.2s;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+  color: #e6a756 !important;
+}
+
+.fa-circle-user {
+  font-size: 2rem;
+}
+/* ============== Hero Section ================= */
+.hero-section {
+  position: relative;
+  min-height: 80vh;
+  background-image: url("../images/banner-1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.hero-overlay {
+  background: rgba(40, 30, 20, 0.35);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin-left: 5vw;
+}
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.hero-desc {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+.btn-cta {
+  background: #e6a756;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 30px;
+  padding: 0.75rem 2.5rem;
+  border: none;
+}
+.btn-cta:hover {
+  background: #d49c3d;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(230, 167, 86, 0.18);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-content {
+    margin-left: 0;
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .navbar-brand img {
+    height: 60px; /* hoặc nhỏ hơn */
+  }
+}
