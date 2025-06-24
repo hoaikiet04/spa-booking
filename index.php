@@ -377,43 +377,43 @@
           <!-- Gallery Item 1 -->
           <div class="col-md-4">
             <div class="gallery-item">
-              <img src="./assets/images/gallery-image6.jpg" alt="Mayu Spa 1" class="gallery-img" />
+              <img src="./assets/images/gallery-image6.jpg" alt="Beauty Spa 1" class="gallery-img" />
               <div class="gallery-caption">
-                Chào mừng bạn đến với MAYU Spa - Dịch vụ Spa tại TP. Hồ Chí Minh. Đội ngũ nhân viên của chúng tôi luôn sẵn sàng hỗ trợ bạn.
+                Chào mừng bạn đến với Beauty Spa - Dịch vụ Spa tại TP. Hồ Chí Minh. Đội ngũ nhân viên của chúng tôi luôn sẵn sàng hỗ trợ bạn.
               </div>
             </div>
           </div>
           <!-- Gallery Item 2 -->
           <div class="col-md-4">
             <div class="gallery-item">
-              <img src="./assets/images/gallery-image2.jpg" alt="Mayu Spa 2" class="gallery-img" />
+              <img src="./assets/images/gallery-image2.jpg" alt="Beauty Spa 2" class="gallery-img" />
               <div class="gallery-caption">
-                Chúng tôi cung cấp các sản phẩm chăm sóc da được tuyển chọn kỹ lưỡng, bao gồm cả các loại dầu massage luôn có sẵn để trải nghiệm tại MAYU Spa.
+                Chúng tôi cung cấp các sản phẩm chăm sóc da được tuyển chọn kỹ lưỡng, bao gồm cả các loại dầu massage luôn có sẵn để trải nghiệm tại Beauty Spa.
               </div>
             </div>
           </div>
           <!-- Gallery Item 3 -->
           <div class="col-md-4">
             <div class="gallery-item">
-              <img src="./assets/images/gallery-image3.jpg" alt="Mayu Spa 3" class="gallery-img" />
+              <img src="./assets/images/gallery-image3.jpg" alt="Beauty Spa 3" class="gallery-img" />
               <div class="gallery-caption">
-                Không gian sảnh của chúng tôi được thiết kế theo phong cách hiện đại Nhật Bản, là một trong những điểm nhấn của MAYU Spa.
+                Không gian sảnh của chúng tôi được thiết kế theo phong cách hiện đại Nhật Bản, là một trong những điểm nhấn của Beauty Spa.
               </div>
             </div>
           </div>
           <!-- Gallery Item 4 -->
           <div class="col-md-4">
             <div class="gallery-item">
-              <img src="./assets/images/gallery-image4.jpg" alt="Mayu Spa 4" class="gallery-img" />
+              <img src="./assets/images/gallery-image4.jpg" alt="Beauty Spa 4" class="gallery-img" />
               <div class="gallery-caption">
-                Hàng tre tại lối vào mang đậm phong cách khu vườn Nhật Bản, dấu ấn đặc trưng của MAYU Spa.
+                Hàng tre tại lối vào mang đậm phong cách khu vườn Nhật Bản, dấu ấn đặc trưng của Beauty Spa.
               </div>
             </div>
           </div>
           <!-- Gallery Item 5 -->
           <div class="col-md-4">
             <div class="gallery-item">
-              <img src="./assets/images/gallery-image5.jpg" alt="Mayu Spa 5" class="gallery-img" />
+              <img src="./assets/images/gallery-image5.jpg" alt="Beauty Spa 5" class="gallery-img" />
               <div class="gallery-caption">
                 Trước và sau buổi trị liệu tại spa, hãy thoải mái thư giãn trong không gian sảnh tiện nghi của chúng tôi.
               </div>
@@ -422,7 +422,7 @@
           <!-- Gallery Item 6 -->
           <div class="col-md-4">
             <div class="gallery-item">
-              <img src="./assets/images/gallery-image-6.jpg" alt="Mayu Spa 6" class="gallery-img" />
+              <img src="./assets/images/gallery-image1.jpg" alt="Beauty Spa 6" class="gallery-img" />
               <div class="gallery-caption">
                 Không gian trị liệu của chúng tôi được thiết kế để mang đến môi trường thư giãn cho khách hàng.
               </div>
@@ -431,6 +431,53 @@
         </div>
       </div>
     </section>
+
+    <!-- Footer section -->
+    <footer class="footer-section text-white pt-5 pb-4 position-relative">
+      <div class="footer-bg"></div>
+      <div class="container position-relative z-2">
+        <div class="row g-4">
+          
+          <!-- Giới thiệu -->
+          <div class="col-md-4">
+            <div class="d-flex align-items-center mb-3">
+              <img src="./assets/images/logo_removebg.png" alt="Logo" style="height: 60px;" class="me-2" />
+              <h5 class="mb-0 fw-bold">Spa Beauty</h5>
+            </div>
+            <p class="footer-desc">
+              "Sáng suốt lựa chọn nơi làm đẹp an toàn, uy tín nhất, cho chất lượng thẩm mỹ hoàn hảo nhất, nghĩa là bạn đang tôn trọng chính bạn. Nên nhớ rằng, làm đẹp là phải đẹp nhưng an toàn."
+            </p>
+            <div class="footer-social d-flex gap-2">
+              <a href="#" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="footer-social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+              <a href="#" class="footer-social-icon" aria-label="Google Plus"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="footer-social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <!-- Liên hệ -->
+          <div class="col-md-4 m">
+            <h5 class="footer-title mb-3">LIÊN HỆ</h5>
+            <p class="mb-2">Mọi thông tin liên hệ, thắc mắc, xin liên hệ chúng tôi:</p>
+            <ul class="footer-contact-list">
+              <li><strong>Địa chỉ:</strong> Đường Tô Ký, Phường Tân Chánh Hiệp, Quận 12, TP.HCM</li>
+              <li><strong>Email:</strong> sutudent@ut.edu.vn</li>
+              <li><strong>Điện thoại:</strong> 028 3849 1234</li>
+            </ul>
+          </div>
+
+          <!-- Fanpage -->
+          <div class="col-md-4">
+            <h5 class="footer-title mb-3">KẾT NỐI FANPAGE</h5>
+            <div class="footer-fanpage">
+              
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
 
 
     <!-- jQuery CDN -->
