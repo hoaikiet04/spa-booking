@@ -20,4 +20,47 @@ $(document).ready(function () {
       }
     });
   });
+
+  // trans feedback
+  var $cards = $(".testimonial-card-col");
+  var visibleCount = 3;
+  var currentIndex = 0;
+
+  function showCards() {
+    $cards.addClass("d-none");
+    for (let i = 0; i < visibleCount; i++) {
+      var idx = currentIndex + i;
+      if (idx < $cards.length) {
+        $cards.eq(idx).removeClass("d-none");
+      }
+    }
+  }
+
+  function updateArrows() {
+    $(".arrow-left").prop("disabled", currentIndex === 0);
+    $(".arrow-right").prop(
+      "disabled",
+      currentIndex + visibleCount >= $cards.length
+    );
+  }
+
+  $(".arrow-left").click(function () {
+    if (currentIndex > 0) {
+      currentIndex--;
+      showCards();
+      updateArrows();
+    }
+  });
+
+  $(".arrow-right").click(function () {
+    if (currentIndex + visibleCount < $cards.length) {
+      currentIndex++;
+      showCards();
+      updateArrows();
+    }
+  });
+
+  // Initialize
+  showCards();
+  updateArrows();
 });
