@@ -156,7 +156,7 @@
             <b>Spa Beauty</b> là điểm đến lý tưởng cho hành trình tái tạo vẻ đẹp và thư giãn tâm hồn của bạn. Chúng tôi mang đến <b>danh sách dịch vụ spa đa dạng, từ chăm sóc da chuyên sâu đến các liệu pháp thư giãn toàn thân</b>, được thực hiện bởi đội ngũ chuyên gia tay nghề cao. Mỗi liệu trình tại đây đều sử dụng <b>sản phẩm cao cấp, có nguồn gốc tự nhiên</b>, đảm bảo hiệu quả tối ưu và sự an toàn tuyệt đối cho làn da cùng sức khỏe của bạn.
             </p>
             <p>
-            Chúng tôi tin rằng sự cân bằng giữa sức khỏe thể chất và tinh thần là chìa khóa cho vẻ đẹp bền vững. Với không gian sang trọng, ấm cúng cùng sự phục vụ tận tâm, Spa Beauty cam kết mang đến cho quý khách những trải nghiệm đẳng cấp, giúp bạn tìm lại sự rạng rỡ, năng lượng tràn đầy và cảm giác thư thái trọn vẹn sau mỗi lần ghé thăm.
+            Chúng tôi tin rằng sự cân bằng giữa sức khỏe thể chất và tinh thần là chìa khóa cho vẻ đẹp bền vững. Với <b>không gian sang trọng, ấm cúng cùng sự phục vụ tận tâm</b>, Spa Beauty cam kết mang đến cho quý khách những trải nghiệm đẳng cấp, giúp bạn tìm lại sự rạng rỡ, năng lượng tràn đầy và cảm giác thư thái trọn vẹn sau mỗi lần ghé thăm.
             </p>
             <a href="./about.php" class="btn-cta py-2">XEM THÊM</a>
           </div>
@@ -180,17 +180,16 @@
               <div class="fact-label">Lượt đánh giá</div>
             </div>
             <div class="fact-item">
-              <div class="fact-number">25</div>
+              <div class="fact-number">15</div>
               <div class="fact-label">Năm kinh nghiệm</div>
             </div>
           </div>
           <!-- Boxed content -->
           <div class="col-lg-6">
             <div class="facts-box p-4 p-lg-5">
-              <div class="facts-box-label mb-2">Một vài</div>
-              <h3 class="facts-box-title mb-3">SỰ THẬT VỀ BEAUTY SPA</h3>
+              <h3 class="facts-box-title mb-3">NIỀM TIN VỮNG CHẮC TỪ KHÁCH HÀNG</h3>
               <p>
-                Chúng tôi mong muốn trở thành nhà cung cấp dịch vụ chăm sóc sức khoẻ – sắc đẹp, hướng đến trở thành một mô hình chuẩn mực và tiên phong trong lĩnh vực dịch vụ làm đẹp tại thị trường Việt Nam.
+                Hơn 15 năm qua, <b>Spa Beauty</b> đã chinh phục hàng chục nghìn khách hàng bằng dịch vụ 5 sao và sự tận tâm. Vô vàn đánh giá tích cực là minh chứng cho vị thế dẫn đầu và chất lượng vượt trội của chúng tôi. Chúng tôi không ngừng hoàn thiện để xứng đáng với niềm tin của bạn.
               </p>
             </div>
           </div>
@@ -249,12 +248,12 @@
           </div>
           <!-- Text Content -->
           <div class="col-lg-6">
-            <h2 class="service-quality-title mb-4">Chất lượng dịch vụ hàng đầu</h2>
+            <h2 class="service-quality-title mb-4">HÃY TRẢI NGHIỆM SỰ KHÁC BIỆT THỰC SỰ</h2>
             <p>
-              Demo Spa cung cấp một danh sách dịch vụ đầy đủ, trong đó có những liệu pháp tuyệt vời cho da và toàn thân, và chỉ sử dụng các sản phẩm cho da và mặt hoàn toàn thiên nhiên và hữu cơ. Các gói dịch vụ của chúng tôi được thiết kế không chỉ để chiều chuộng, mà còn để cung cấp các lợi ích rõ rệt nhằm xoa dịu tâm hồn và thân thể quý khách.
+            Bạn không cần phải chấp nhận những dịch vụ spa thông thường. Tại <b>Spa Beauty</b>, chúng tôi <b>định nghĩa lại đẳng cấp chăm sóc</b>, mang đến một danh mục liệu pháp <b>tuyệt vời về chất lượng và an toàn tuyệt đối</b>. Chúng tôi chỉ sử dụng <b>sản phẩm được kiểm chứng, không chứa điều gì khiến bạn phải nghi ngờ</b>, cùng đội ngũ chuyên gia sẽ lắng nghe và đáp ứng mọi nhu cầu, dù là nhỏ nhất.
             </p>
             <p>
-              Một lần thăm viếng Demo Spa sẽ được bắt đầu bằng việc phân tích da kỹ lưỡng bởi một trong những chuyên viên thẩm mỹ dạn dày kinh nghiệm của chúng tôi. Chúng tôi sẽ đề ra một phác đồ dịch vụ phù hợp với nhu cầu cá nhân của mỗi khách hàng.  Chúng tôi chỉ sử dụng các sản phẩm dưỡng da thiên nhiên ngoại hạng được sản xuất với liều lượng nhỏ từ Pháp. Và quý khách sẽ được thấy rõ sự chuyển biến tích cực của làn da ngay sau một lần trị liệu.
+            Đừng lãng phí thời gian và tiền bạc vào những trải nghiệm hời hợt. <b>Spa Beauty cam kết mang đến sự thay đổi rõ rệt ngay sau lần đầu tiên.</b> Chúng tôi không chỉ hứa hẹn; chúng tôi <b>chứng minh bằng kết quả</b>. Hãy đến và cảm nhận sự khác biệt mà một dịch vụ spa thực sự chất lượng có thể mang lại cho vẻ đẹp và sức khỏe của bạn.
             </p>
           </div>
         </div>
@@ -355,7 +354,7 @@
             <div class="service-package-card">
               <img src="./assets/images/service-1.jpg" alt="Chăm sóc da" class="service-package-img img-fluid mb-3" />
               <h5 class="service-package-name">CHĂM SÓC DA</h5>
-              <a href="#" class="service-package-btn mt-2">XEM THÊM</a>
+              <a href="./services.php" class="service-package-btn mt-2">XEM THÊM</a>
             </div>
           </div>
           <!-- Card 2 -->
@@ -363,7 +362,7 @@
             <div class="service-package-card">
               <img src="./assets/images/service-3.jpg" alt="Sức khỏe - Massage" class="service-package-img img-fluid mb-3" />
               <h5 class="service-package-name">SỨC KHỎE – MASSAGE</h5>
-              <a href="#" class="service-package-btn mt-2">XEM THÊM</a>
+              <a href="./services.php" class="service-package-btn mt-2">XEM THÊM</a>
             </div>
           </div>
           <!-- Card 3 -->
@@ -371,7 +370,7 @@
             <div class="service-package-card">
               <img src="./assets/images/service-2.jpg" alt="Chăm sóc cơ thể" class="service-package-img img-fluid mb-3" />
               <h5 class="service-package-name">CHĂM SÓC CƠ THỂ</h5>
-              <a href="#" class="service-package-btn mt-2">XEM THÊM</a>
+              <a href="./services.php" class="service-package-btn mt-2">XEM THÊM</a>
             </div>
           </div>
         </div>
@@ -416,7 +415,7 @@
             <div class="gallery-item">
               <img src="./assets/images/gallery-image3.jpg" alt="Beauty Spa 3" class="gallery-img" />
               <div class="gallery-caption">
-                Không gian sảnh của chúng tôi được thiết kế theo phong cách hiện đại Nhật Bản, là một trong những điểm nhấn của Beauty Spa.
+                Không gian sảnh của chúng tôi được thiết kế theo phong cách hiện đại, là một trong những điểm nhấn của Beauty Spa.
               </div>
             </div>
           </div>
@@ -425,7 +424,7 @@
             <div class="gallery-item">
               <img src="./assets/images/gallery-image4.jpg" alt="Beauty Spa 4" class="gallery-img" />
               <div class="gallery-caption">
-                Hàng tre tại lối vào mang đậm phong cách khu vườn Nhật Bản, dấu ấn đặc trưng của Beauty Spa.
+                Hàng tre tại lối vào mang đậm phong cách khu vườn truyền thống, dấu ấn đặc trưng của Beauty Spa.
               </div>
             </div>
           </div>
