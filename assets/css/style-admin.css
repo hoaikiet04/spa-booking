@@ -1,0 +1,135 @@
+body {
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+.sidebar {
+  min-height: 100vh;
+  background: #fff;
+  border-right: 1px solid #e9ecef;
+  padding-top: 80px; /* Height of navbar */
+}
+.sidebar .nav-link {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 16px 24px 16px;
+  border-radius: 0 24px 24px 0;
+  transition: background 0.2s, color 0.2s;
+}
+.sidebar .nav-link.active-color,
+.sidebar .nav-link:hover {
+  background: #e6a756;
+  color: #fff;
+}
+@media (max-width: 991.98px) {
+  .sidebar {
+    min-height: auto;
+    padding-top: 0;
+  }
+}
+.main-content {
+  padding: 100px 24px;
+}
+
+/* ============== Navbar ================= */
+.navbar {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.navbar-brand {
+  font-weight: 700;
+  color: #e6a756 !important;
+  letter-spacing: 1px;
+  margin: 0 auto;
+}
+.navbar-brand img {
+  height: 80px;
+  vertical-align: middle;
+}
+.navbar-brand span {
+  font-size: 2rem;
+}
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-nav .nav-link {
+  color: #333;
+  font-weight: 500;
+  margin-left: 1rem;
+  transition: color 0.2s;
+}
+.navbar-nav .nav-link.active-color,
+.navbar-nav .nav-link:hover {
+  color: #e6a756 !important;
+}
+
+.fa-circle-user {
+  font-size: 2rem;
+}
+
+/* User dropdown styling */
+.dropdown-menu {
+  background: #fff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  padding: 8px 0;
+  margin-top: 8px;
+  min-width: 160px;
+}
+
+.dropdown-item {
+  color: #333;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: #ff9a9e;
+  color: #fff;
+}
+
+.dropdown-divider {
+  margin: 8px 0;
+  border-color: #e9ecef;
+}
+
+/* Custom hover effect for the dropdown */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Remove default dropdown arrow */
+.dropdown-toggle::after {
+  display: none;
+}
+
+/* ================== banner image ==================*/
+.banner__image {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.custom-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50rem;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.custom-banner.active {
+  opacity: 1;
+  z-index: 1;
+}
