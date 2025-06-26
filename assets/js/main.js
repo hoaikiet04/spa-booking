@@ -1,27 +1,22 @@
 $(document).ready(function () {
-  // Trang chủ - Toggle menu responsive
-  $(document).ready(function () {
-    // Ẩn menu khi tải trang nếu màn hình nhỏ
-    if ($(window).width() < 992) {
-      $("#navbarNav").hide();
-    }
+  // --- Toggle menu responsive ---
+  if ($(window).width() < 992) {
+    $("#navbarNav").hide();
+  }
 
-    // Toggle menu khi click nút toggle
-    $(".navbar-toggler").click(function () {
-      $("#navbarNav").stop().slideToggle();
-    });
-
-    // Reset hiển thị menu khi thay đổi kích thước màn hình
-    $(window).resize(function () {
-      if ($(window).width() >= 992) {
-        $("#navbarNav").show();
-      } else {
-        $("#navbarNav").hide();
-      }
-    });
+  $(".navbar-toggler").click(function () {
+    $("#navbarNav").stop().slideToggle();
   });
 
-  // trans feedback
+  $(window).resize(function () {
+    if ($(window).width() >= 992) {
+      $("#navbarNav").show();
+    } else {
+      $("#navbarNav").hide();
+    }
+  });
+
+  // --- Testimonials carousel ---
   var $cards = $(".testimonial-card-col");
   var visibleCount = 3;
   var currentIndex = 0;
@@ -60,7 +55,16 @@ $(document).ready(function () {
     }
   });
 
-  // Initialize
   showCards();
   updateArrows();
+
+  // --- Dropdown on hover ---
+  $(".nav-item.dropdown").hover(
+    function () {
+      $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeIn(300);
+    },
+    function () {
+      $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeOut(300);
+    }
+  );
 });

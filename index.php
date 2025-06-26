@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>Trang chủ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css?v=<?= time(); ?>" />
 
     <!-- Bootstrap CSS CDN -->
     <link
@@ -19,50 +19,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Slab:wght@100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- Navbar -->
     <!-- Navbar/Header -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top px-0 px-lg-5 py-0">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <!-- Logo or text -->
-          <img
-            src="./assets/images/logo_removebg.png"
-            alt="Logo" 
-          />
-          Spa Beauty
+          <img src="./assets/images/logo_removebg.png" alt="Logo" />
+          <span>Spa Beauty</span>
         </a>
-        <!-- Nút toggle -->
+
+        <!-- Nút toggle cho mobile -->
         <button
           class="navbar-toggler"
           type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menu toggle -->
-        <div class="navbar-collapse justify-content-end" id="navbarNav">
+        <!-- Menu khi toggle -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#">TRANG CHỦ</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">GIỚI THIỆU</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">DỊCH VỤ</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">BLOG</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">ĐẶT LỊCH</a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-circle-user"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="#!">TRANG CHỦ</a></li>
+            <li class="nav-item"><a class="nav-link" href="./about.php">GIỚI THIỆU</a></li>
+            <li class="nav-item"><a class="nav-link" href="./services.php">DỊCH VỤ</a></li>
+            <li class="nav-item"><a class="nav-link" href="./booking.php">ĐẶT LỊCH</a></li>
+            
+            <!-- Dropdown người dùng -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fa-solid fa-circle-user"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="./user/login.php">Đăng nhập</a></li>
+                <li><a class="dropdown-item" href="./user/register.php">Đăng ký</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="./user/logout.php">Đăng xuất</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
 
+
     <!-- Hero Section with Carousel Indicators -->
     <section class="hero-section d-flex align-items-center">
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <h1 class="hero-title">Dịch vụ 5 sao, không gian thoải mái</h1>
+        <h1 class="hero-title">Thư thái trọn vẹn <br>Vẻ đẹp thăng hoa</h1>
         <p class="hero-desc">
-          Demo Spa mong muốn trở thành nhà cung cấp dịch vụ chăm sóc sức khoẻ
-          tốt nhất cho bạn.
+        Khám phá dịch vụ 5 sao và không gian đẳng cấp, nơi bạn được chăm sóc sức khỏe và sắc đẹp một cách tốt nhất.
         </p>
-        <button class="btn-cta" id="bookBtn">Đặt lịch ngay</button>
+        <button class="btn-cta" id="bookBtn"><a href="./booking.php" class="btn-cta">Đặt lịch ngay</a></button>
       </div>
     </section>
 
@@ -72,7 +91,7 @@
         <div class="row mb-5">
           <div class="col-12 text-end">
             <h2 class="section-title">
-              DỊCH VỤ <span class="section-title-bar"></span>
+              DỊCH VỤ <span class="section-bar"></span>
             </h2>
             <div class="section-subtitle fw-bold">Tiêu biểu</div>
           </div>
@@ -84,7 +103,7 @@
                 <img src="./assets/images/feature-1.jpg" alt="Chăm sóc da" class="img-fluid rounded-circle" />
               </div>
               <h5 class="service-title">CHĂM SÓC DA</h5>
-              <p class="service-desc">Chăm sóc da với liệu trình đặc biệt.</p>
+              <p class="service-desc">Nâng niu làn da, rạng rỡ nét thanh xuân.</p>
             </div>
           </div>
           <div class="col-12 col-sm-6 col-lg-3 mb-4">
@@ -92,8 +111,8 @@
               <div class="service-img mx-auto mb-3">
                 <img src="./assets/images/feature-2.jpg" alt="Massage" class="img-fluid rounded-circle" />
               </div>
-              <h5 class="service-title">SỨC KHỎE - MASSAGE</h5>
-              <p class="service-desc">Massage thư giãn với đá nóng.</p>
+              <h5 class="service-title">CÔNG NGHỆ TRỊ LIỆU</h5>
+              <p class="service-desc">Khơi nguồn sắc vóc <br>Kiến tạo vẻ đẹp tương lai.</p>
             </div>
           </div>
           <div class="col-12 col-sm-6 col-lg-3 mb-4">
@@ -102,7 +121,7 @@
                 <img src="./assets/images/feature-3.jpg" class="img-fluid rounded-circle"/>
               </div>
               <h5 class="service-title">CHĂM SÓC CƠ THỂ</h5>
-              <p class="service-desc">Chăm sóc toàn thân 360.</p>
+              <p class="service-desc">Thư thái toàn diện, phục hồi năng lượng.</p>
             </div>
           </div>
           <div class="col-12 col-sm-6 col-lg-3 mb-4">
@@ -110,8 +129,8 @@
               <div class="service-img mx-auto mb-3">
                 <img src="./assets/images/feature-4.jpg" class="img-fluid rounded-circle" />
               </div>
-              <h5 class="service-title">TRẺ HÓA DA</h5>
-              <p class="service-desc">Trẻ hóa da như em bé.</p>
+              <h5 class="service-title">CHĂM SÓC SỨC KHỎE</h5>
+              <p class="service-desc">Cân bằng thân tâm <br>Sống trọn vẹn từng khoảnh khắc.</p>
             </div>
           </div>
         </div>
@@ -131,15 +150,15 @@
           </div>
           <!-- Text content -->
           <div class="col-lg-6">
-            <h2 class="about-title mb-3">CHÚNG TÔI LÀ AI?</h2>
+            <h2 class="about-title mb-3">KHÁM PHÁ SPA BEAUTY</h2>
             <div class="about-title-underline mb-4"></div>
             <p>
-              Demo Spa cung cấp một danh sách dịch vụ đầy đủ, trong đó có những liệu pháp tuyệt vời cho da và toàn thân, và chỉ sử dụng các sản phẩm cho da và mặt hoàn toàn thiên nhiên và hữu cơ. Các gói dịch vụ của chúng tôi được thiết kế không chỉ để chiều chuộng, mà còn để cung cấp các lợi ích rõ rệt nhằm xoa dịu tâm hồn và thân thể quý khách.
+            <b>Spa Beauty</b> là điểm đến lý tưởng cho hành trình tái tạo vẻ đẹp và thư giãn tâm hồn của bạn. Chúng tôi mang đến <b>danh sách dịch vụ spa đa dạng, từ chăm sóc da chuyên sâu đến các liệu pháp thư giãn toàn thân</b>, được thực hiện bởi đội ngũ chuyên gia tay nghề cao. Mỗi liệu trình tại đây đều sử dụng <b>sản phẩm cao cấp, có nguồn gốc tự nhiên</b>, đảm bảo hiệu quả tối ưu và sự an toàn tuyệt đối cho làn da cùng sức khỏe của bạn.
             </p>
             <p>
-              Một lần thăm viếng Demo Spa sẽ được bắt đầu bằng việc phân tích da kỹ lưỡng bởi một trong những chuyên viên thẩm mỹ dạn dày kinh nghiệm của chúng tôi. Chúng tôi sẽ đề ra một phác đồ dịch vụ phù hợp với nhu cầu cá nhân của mỗi khách hàng. Chúng tôi chỉ sử dụng các sản phẩm dưỡng da thiên nhiên ngoại hạng được sản xuất với liều lượng nhỏ từ Pháp. Và quý khách sẽ được thấy rõ sự chuyển biến tích cực của làn da ngay sau một lần trị liệu.
+            Chúng tôi tin rằng sự cân bằng giữa sức khỏe thể chất và tinh thần là chìa khóa cho vẻ đẹp bền vững. Với không gian sang trọng, ấm cúng cùng sự phục vụ tận tâm, Spa Beauty cam kết mang đến cho quý khách những trải nghiệm đẳng cấp, giúp bạn tìm lại sự rạng rỡ, năng lượng tràn đầy và cảm giác thư thái trọn vẹn sau mỗi lần ghé thăm.
             </p>
-            <a href="#" class="btn about-btn mt-3">XEM THÊM <span class="about-btn-arrow">→</span></a>
+            <a href="./about.php" class="btn-cta py-2">XEM THÊM</a>
           </div>
         </div>
       </div>
@@ -441,7 +460,6 @@
           <!-- Giới thiệu -->
           <div class="col-md-4">
             <div class="d-flex align-items-center mb-3">
-              <img src="./assets/images/logo_removebg.png" alt="Logo" style="height: 60px;" class="me-2" />
               <h5 class="mb-0 fw-bold">Spa Beauty</h5>
             </div>
             <p class="footer-desc">
@@ -461,7 +479,7 @@
             <p class="mb-2">Mọi thông tin liên hệ, thắc mắc, xin liên hệ chúng tôi:</p>
             <ul class="footer-contact-list">
               <li><strong>Địa chỉ:</strong> Đường Tô Ký, Phường Tân Chánh Hiệp, Quận 12, TP.HCM</li>
-              <li><strong>Email:</strong> sutudent@ut.edu.vn</li>
+              <li><strong>Email:</strong> student@ut.edu.vn</li>
               <li><strong>Điện thoại:</strong> 028 3849 1234</li>
             </ul>
           </div>
