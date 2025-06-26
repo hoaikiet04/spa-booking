@@ -264,7 +264,7 @@
     <section class="testimonials-section position-relative py-5">
       <div class="testimonials-bg"></div>
       <div class="container position-relative z-2">
-        <h2 class="text-center testimonials-title mb-5">Khách hàng nói gì về chúng tôi?</h2>
+        <h2 class="text-center testimonials-title mb-5">CÂU CHUYỆN VỀ SỰ HÀI LÒNG</h2>
         <div class="testimonials-slider-wrapper d-flex align-items-center justify-content-center">
           <button class="testimonial-arrow arrow-left me-3" aria-label="Trước">
             <span>&lt;</span>
@@ -273,65 +273,64 @@
             <!-- Testimonial cards (add as many as you want, only 3 will show at a time) -->
             <div class="col-md-4 testimonial-card-col d-none">
               <div class="testimonial-card p-4 text-center">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="testimonial-avatar mb-3" alt="Elly Trần">
+                <img src="./assets/images/feedback1.jpg" class="testimonial-avatar mb-3" alt="Elly Trần">
                 <div class="testimonial-stars mb-2">
                   <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
                 <div class="testimonial-text mb-3">
-                  Đời sống phát triển, con người trở nên quan tâm, chăm sóc sức khỏe của mình kĩ càng hơn...
+                Thật sự bất ngờ với chất lượng dịch vụ ở Spa Beauty! Từ không gian ấm cúng đến mùi hương dịu nhẹ, mọi thứ đều giúp tôi thư giãn tuyệt đối. Các bạn nhân viên vô cùng tận tâm và chuyên nghiệp, kỹ thuật massage đỉnh cao làm tan biến mọi mệt mỏi. Tôi chắc chắn sẽ quay lại!
                 </div>
-                <div class="testimonial-author fw-bold">Elly Trần <span class="fw-normal">/ Người mẫu</span></div>
+                <div class="testimonial-author fw-bold">Pháp Kiều <span class="fw-normal">/ Rapper</span></div>
               </div>
             </div>
             <div class="col-md-4 testimonial-card-col d-none">
               <div class="testimonial-card p-4 text-center">
-                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="testimonial-avatar mb-3" alt="Ngọc Trinh">
+                <img src="./assets/images/feedback3.jpg" class="testimonial-avatar mb-3" alt="Ngọc Trinh">
                 <div class="testimonial-stars mb-2">
                   <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
                 <div class="testimonial-text mb-3">
-                  Dịch vụ tuyệt vời, nhân viên thân thiện và chuyên nghiệp. Tôi rất hài lòng với trải nghiệm tại đây!  nhân viên thân thiện và chuyên nghiệp. Tôi rất hài lòng với trải nghiệm tại đây!  nhân viên thân thiện và chuyên nghiệp. Tôi rất hài lòng với trải nghiệm tại đây!
+                Tôi đã thử nhiều spa nhưng Spa Beauty có lẽ là nơi khiến tôi hài lòng nhất. Tôi chọn gói trị liệu body và cảm thấy cơ thể nhẹ nhõm hẳn. Sản phẩm sử dụng rất cao cấp, không hề gây kích ứng da nhạy cảm của tôi. Đây đúng là địa điểm lý tưởng để nạp lại năng lượng sau những ngày làm việc căng thẳng.
                 </div>
                 <div class="testimonial-author fw-bold">Ngọc Trinh <span class="fw-normal">/ Người mẫu</span></div>
               </div>
             </div>
             <div class="col-md-4 testimonial-card-col d-none">
               <div class="testimonial-card p-4 text-center">
-                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="testimonial-avatar mb-3" alt="Minh Hằng">
+                <img src="./assets/images/feedback2.jpg" class="testimonial-avatar mb-3" alt="Minh Hằng">
                 <div class="testimonial-stars mb-2">
                   <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
                 <div class="testimonial-text mb-3">
-                  Không gian sang trọng, dịch vụ chất lượng cao. Tôi sẽ quay lại và giới thiệu cho bạn bè!
+                Một trải nghiệm thực sự đẳng cấp! Cơ sở vật chất hiện đại, sạch sẽ và rất riêng tư. Tôi đặc biệt ấn tượng với kỹ năng của chuyên viên massage, họ thực sự hiểu cơ thể và biết cách thư giãn từng bó cơ. Tôi cảm thấy khỏe khoắn và tràn đầy sức sống sau buổi trị liệu. Rất khuyến khích mọi người nên thử!
                 </div>
                 <div class="testimonial-author fw-bold">Minh Hằng <span class="fw-normal">/ Ca sĩ</span></div>
               </div>
             </div>
             <div class="col-md-4 testimonial-card-col d-none">
               <div class="testimonial-card p-4 text-center">
-                <img src="https://randomuser.me/api/portraits/women/69.jpg" class="testimonial-avatar mb-3" alt="Lan Ngọc">
+                <img src="./assets/images/feedback4.jpg" class="testimonial-avatar mb-3" alt="Lan Ngọc">
                 <div class="testimonial-stars mb-2">
                   <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
                 <div class="testimonial-text mb-3">
-                  Dịch vụ tuyệt vời, nhân viên thân thiện và chuyên nghiệp. Tôi rất hài lòng với trải nghiệm tại đây!
+                Vừa bước vào đã thấy khác biệt, không gian sang trọng và thơm mát. Tôi chọn dịch vụ trẻ hóa da công nghệ cao và kết quả vượt ngoài mong đợi! Da tôi săn chắc và mịn màng hơn rõ rệt chỉ sau vài buổi. Nhân viên tư vấn rất kỹ lưỡng và luôn hỏi han trong suốt quá trình. Tôi hoàn toàn tin tưởng Spa Beauty!
                 </div>
                 <div class="testimonial-author fw-bold">Lan Ngọc <span class="fw-normal">/ Diễn viên</span></div>
               </div>
             </div>
             <div class="col-md-4 testimonial-card-col d-none">
               <div class="testimonial-card p-4 text-center">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="testimonial-avatar mb-3" alt="Quang Dũng">
+                <img src="./assets/images/feedback5.jpg" class="testimonial-avatar mb-3" alt="Quang Dũng">
                 <div class="testimonial-stars mb-2">
                   <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
                 <div class="testimonial-text mb-3">
-                  Không gian sang trọng, dịch vụ chất lượng cao. Tôi sẽ quay lại và giới thiệu cho bạn bè!
+                  Là nam giới nhưng tôi vẫn muốn tìm một nơi thư giãn thật sự. Spa Beauty đã không làm tôi thất vọng. Liệu trình chăm sóc da mặt chuyên sâu khiến da tôi sáng và sạch hơn hẳn. Đặc biệt, nhân viên rất chu đáo, tư vấn nhiệt tình mà không hề tạo áp lực. Rất đáng tiền!
                 </div>
-                <div class="testimonial-author fw-bold">Quang Dũng <span class="fw-normal">/ Doanh nhân</span></div>
+                <div class="testimonial-author fw-bold">Hiếu Thứ Hai <span class="fw-normal">/ Rapper</span></div>
               </div>
             </div>
-            <!-- ...thêm nhiều testimonial-card-col nếu muốn... -->
           </div>
           <button class="testimonial-arrow arrow-right ms-3" aria-label="Sau">
             <span>&gt;</span>

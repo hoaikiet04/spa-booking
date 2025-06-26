@@ -23,53 +23,48 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top px-0 px-lg-5 py-0">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <!-- Logo or text -->
-          <img
-            src="./assets/images/logo_removebg.png"
-            alt="Logo" 
-          />
+          <img src="./assets/images/logo_removebg.png" alt="Logo" />
           <span>Spa Beauty</span>
         </a>
-        <!-- Nút toggle -->
+
+        <!-- Nút toggle cho mobile -->
         <button
           class="navbar-toggler"
           type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menu toggle -->
-        <div class="navbar-collapse justify-content-end" id="navbarNav">
+        <!-- Menu khi toggle -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#">TRANG CHỦ</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">GIỚI THIỆU</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">DỊCH VỤ</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">ĐẶT LỊCH</a></li>
+            <li class="nav-item"><a class="nav-link" href="./index.php">TRANG CHỦ</a></li>
+            <li class="nav-item"><a class="nav-link" href="./about.php">GIỚI THIỆU</a></li>
+            <li class="nav-item"><a class="nav-link" href="./services.php">DỊCH VỤ</a></li>
+            <li class="nav-item"><a class="nav-link" href="./booking.php">ĐẶT LỊCH</a></li>
+            
+            <!-- Dropdown người dùng -->
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
+                id="userDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 <i class="fa-solid fa-circle-user"></i>
               </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="./user/login.php">Đăng nhập</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="./user/register.php"
-                    >Đăng ký</a
-                  >
-                </li>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="./user/login.php">Đăng nhập</a></li>
+                <li><a class="dropdown-item" href="./user/register.php">Đăng ký</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="./user/logout.php"
-                    >Đăng xuất</a
-                  >
-                </li>
+                <li><a class="dropdown-item" href="./user/logout.php">Đăng xuất</a></li>
               </ul>
             </li>
           </ul>
@@ -81,12 +76,11 @@
     <section class="hero-section d-flex align-items-center">
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <h1 class="hero-title">Dịch vụ 5 sao, không gian thoải mái</h1>
+        <h1 class="hero-title">Dịch vụ 5 sao <br> Không gian thoải mái</h1>
         <p class="hero-desc">
-          Demo Spa mong muốn trở thành nhà cung cấp dịch vụ chăm sóc sức khoẻ
-          tốt nhất cho bạn.
+        Thư thái trọn vẹn, vẻ đẹp thăng hoa. Spa Beauty cam kết mang đến trải nghiệm chăm sóc sức khỏe và sắc đẹp tuyệt vời nhất cho bạn.
         </p>
-        <button class="btn-cta" id="bookBtn">Đặt lịch ngay</button>
+        <button class="btn-cta" id="bookBtn"><a class="btn-cta" href="./booking.php">Đặt lịch ngay</a></button>
       </div>
     </section>
 
@@ -108,7 +102,7 @@
                 <img src="./assets/images/feature-1.jpg" alt="Chăm sóc da" class="img-fluid rounded-circle" />
               </div>
               <h5 class="service-title">CHĂM SÓC DA</h5>
-              <p class="service-desc">Chăm sóc da với liệu trình đặc biệt.</p>
+              <p class="service-desc">Nâng niu làn da, rạng rỡ nét thanh xuân.</p>
             </div>
           </div>
           <div class="col-12 col-sm-6 col-lg-3 mb-4">
@@ -116,8 +110,8 @@
               <div class="service-img mx-auto mb-3">
                 <img src="./assets/images/feature-2.jpg" alt="Massage" class="img-fluid rounded-circle" />
               </div>
-              <h5 class="service-title">SỨC KHỎE - MASSAGE</h5>
-              <p class="service-desc">Massage thư giãn với đá nóng.</p>
+              <h5 class="service-title">CÔNG NGHỆ TRỊ LIỆU</h5>
+              <p class="service-desc">Khơi nguồn sắc vóc <br>Kiến tạo vẻ đẹp tương lai.</p>
             </div>
           </div>
           <div class="col-12 col-sm-6 col-lg-3 mb-4">
@@ -126,7 +120,7 @@
                 <img src="./assets/images/feature-3.jpg" class="img-fluid rounded-circle"/>
               </div>
               <h5 class="service-title">CHĂM SÓC CƠ THỂ</h5>
-              <p class="service-desc">Chăm sóc toàn thân 360.</p>
+              <p class="service-desc">Thư thái toàn diện, phục hồi năng lượng.</p>
             </div>
           </div>
           <div class="col-12 col-sm-6 col-lg-3 mb-4">
@@ -134,8 +128,8 @@
               <div class="service-img mx-auto mb-3">
                 <img src="./assets/images/feature-4.jpg" class="img-fluid rounded-circle" />
               </div>
-              <h5 class="service-title">TRẺ HÓA DA</h5>
-              <p class="service-desc">Trẻ hóa da như em bé.</p>
+              <h5 class="service-title">CHĂM SÓC SỨC KHỎE</h5>
+              <p class="service-desc">Cân bằng thân tâm <br>Sống trọn vẹn từng khoảnh khắc.</p>
             </div>
           </div>
         </div>
@@ -254,7 +248,7 @@
       <div class="container">
         <div class="px-2 mb-5 text-end">
           <h2 class="section-title section-title-right px-1">
-            Trẻ hoá da <span class="section-bar-about"></span>
+            Công nghệ trị liệu<span class="section-bar-about"></span>
           </h2>
         </div>
 
@@ -355,13 +349,13 @@
       </div>
     </section>
 
-    <!-- Gallery services "Chăm sóc da" -->
+    <!-- Gallery services "Chăm cơ thể" -->
      <!-- 3 -->
     <section class="service-gallery py-5">
       <div class="container">
         <div class="px-2 mb-5">
             <h2 class="section-title px-1">
-                  Chăm sóc da <span class="section-bar-about"></span>
+                  Chăm cơ thể<span class="section-bar-about"></span>
             </h2>
         </div>
         <div class="row g-4">
@@ -461,13 +455,13 @@
       </div>
     </section>
 
-    <!-- Gallery services "Chăm sóc da" -->
+    <!-- Gallery services "Chăm sức khỏe" -->
      <!-- 4 -->
     <section class="service-gallery py-5">
       <div class="container">
         <div class="px-2 mb-5 text-end">
           <h2 class="section-title section-title-right px-1">
-            Trẻ hoá da <span class="section-bar-about"></span>
+            Chăm sóc sức khỏe<span class="section-bar-about"></span>
           </h2>
         </div>
         <div class="row g-4">

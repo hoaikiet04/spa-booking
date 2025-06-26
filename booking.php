@@ -23,53 +23,48 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top px-0 px-lg-5 py-0">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <!-- Logo or text -->
-          <img
-            src="./assets/images/logo_removebg.png"
-            alt="Logo" 
-          />
+          <img src="./assets/images/logo_removebg.png" alt="Logo" />
           <span>Spa Beauty</span>
         </a>
-        <!-- Nút toggle -->
+
+        <!-- Nút toggle cho mobile -->
         <button
           class="navbar-toggler"
           type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menu toggle -->
-        <div class="navbar-collapse justify-content-end" id="navbarNav">
+        <!-- Menu khi toggle -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#">TRANG CHỦ</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">GIỚI THIỆU</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">DỊCH VỤ</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">ĐẶT LỊCH</a></li>
+            <li class="nav-item"><a class="nav-link" href="./index.php">TRANG CHỦ</a></li>
+            <li class="nav-item"><a class="nav-link" href="./about.php">GIỚI THIỆU</a></li>
+            <li class="nav-item"><a class="nav-link" href="./services.php">DỊCH VỤ</a></li>
+            <li class="nav-item"><a class="nav-link" href="./booking.php">ĐẶT LỊCH</a></li>
+            
+            <!-- Dropdown người dùng -->
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
+                id="userDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 <i class="fa-solid fa-circle-user"></i>
               </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="./user/login.php">Đăng nhập</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="./user/register.php"
-                    >Đăng ký</a
-                  >
-                </li>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="./user/login.php">Đăng nhập</a></li>
+                <li><a class="dropdown-item" href="./user/register.php">Đăng ký</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="./user/logout.php"
-                    >Đăng xuất</a
-                  >
-                </li>
+                <li><a class="dropdown-item" href="./user/logout.php">Đăng xuất</a></li>
               </ul>
             </li>
           </ul>
