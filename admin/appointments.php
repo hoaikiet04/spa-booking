@@ -1,3 +1,4 @@
+<?php include "../includes/connect.php";?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -23,7 +24,7 @@
   <!-- Navbar/Header -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top px-0 py-0 border-bottom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="./index.php">
           <img src="../assets/images/logo_removebg.png" alt="Logo" />
           <span>Spa Beauty</span>
         </a>
@@ -57,10 +58,9 @@
                 <i class="fa-solid fa-circle-user"></i>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="./user/login.php">Đăng nhập</a></li>
-                <li><a class="dropdown-item" href="./user/register.php">Đăng ký</a></li>
+                <li><a class="dropdown-item" href="../user/login.php">Đăng nhập</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="./user/logout.php">Đăng xuất</a></li>
+                <li><a class="dropdown-item" href="../user/logout.php">Đăng xuất</a></li>
               </ul>
             </li>
           </ul>
@@ -75,25 +75,68 @@
         <div class="position-sticky">
           <ul class="nav flex-column mt-4">
             <li class="nav-item">
-              <a class="nav-link" href="#">Quản lý người dùng</a>
+              <a class="nav-link" href="./customers.php">Quản lý người dùng</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Quản lý dịch vụ</a>
+              <a class="nav-link" href="./services.php">Quản lý dịch vụ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Lịch hẹn</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Thêm dịch vụ</a>
+              <a class="nav-link" href="#!">Lịch hẹn</a>
             </li>
           </ul>
         </div>
       </nav>
       <!-- Main Content -->
       <main class="col-lg-10 offset-lg-2 col-md-9 offset-md-3 ms-sm-auto px-md-4 main-content">
-        <!-- Insert your admin content here -->
-        <h1 class="h3 mb-4">Welcome to the Admin Dashboard</h1>
-        <p>This is your main content area. Add your dashboard widgets, tables, or forms here.</p>
+        <section class="container mt-5">
+            <h2 class="mb-4">Danh sách lịch hẹn</h2>
+            <table class="table table-bordered table-hover text-center align-middle">
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Họ tên</th>
+                  <th>Số điện thoại</th>
+                  <th>Dịch vụ</th>
+                  <th>Ngày & Giờ</th>
+                  <th>Ghi chú</th> 
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                  $sql = "
+                  SELECT 
+                    b.id, 
+                    b.full_name, 
+                    b.phone, 
+                    s.title AS service_title, 
+                    b.booking_date, 
+                    b.booking_time,
+                    b.note -- thêm dòng này
+                  FROM bookings b
+                  JOIN services s ON b.service_id = s.id
+                  ORDER BY b.booking_date DESC, b.booking_time DESC
+                  ";
+                  $result = $conn->query($sql);
+                  $i = 1;
+                  if ($result && $result->num_rows > 0):
+                    while ($row = $result->fetch_assoc()):
+                ?>
+                <tr>
+                  <td><?= $i++ ?></td>
+                  <td><?= htmlspecialchars($row['full_name']) ?></td>
+                  <td><?= htmlspecialchars($row['phone']) ?></td>
+                  <td><?= htmlspecialchars($row['service_title']) ?></td>
+                  <td><?= date('d/m/Y', strtotime($row['booking_date'])) . ' - ' . date('H:i', strtotime($row['booking_time'])) ?></td>
+                  <td><?= htmlspecialchars($row['note']) ?></td>
+                </tr>
+                <?php endwhile; else: ?>
+                <tr>
+                  <td colspan="6">Không có lịch hẹn nào</td>
+                </tr>
+                <?php endif; ?>
+              </tbody>
+            </table>
+        </section>
       </main>
     </div>
   </div>

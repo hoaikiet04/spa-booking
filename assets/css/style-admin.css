@@ -133,3 +133,26 @@ body {
   opacity: 1;
   z-index: 1;
 }
+
+.card.service-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.card.service-card:hover {
+  transform: scale(1.01);
+}
+
+.btn-color {
+  background-color: #ecc77e !important;
+  color: #fff !important;
+}
+.text-color {
+  color: #ecc77e !important;
+}
+
+.custom-thead {
+  background-color: #ecc77e;
+  color: #000;
+}

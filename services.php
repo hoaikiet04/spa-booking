@@ -1,3 +1,20 @@
+<?php include "./includes/connect.php"; ?>
+
+<?php
+// Lấy tất cả danh mục
+$all_categories = $conn->query("SELECT * FROM service_categories");
+
+// Lọc theo category (nếu có)
+$filter_id = isset($_GET['category']) ? intval($_GET['category']) : 0;
+
+if ($filter_id > 0) {
+    // Nếu người dùng chọn lọc → chỉ lấy danh mục đó
+    $categories = $conn->query("SELECT * FROM service_categories WHERE id = $filter_id");
+} else {
+    // Không lọc → lấy tất cả
+    $categories = $conn->query("SELECT * FROM service_categories");
+}
+?>
 <!DOCTYPE html>
 <html lang="vi">
   <head>
@@ -136,433 +153,76 @@
       </div>
     </section>
 
-    <!-- Gallery services "Chăm sóc da" -->
-     <!-- 1 -->
-    <section class="service-gallery py-5">
-      <div class="container">
-        <div class="px-2 mb-5">
+    <!-- Thanh lọc danh mục -->
+    <section class="container my-4" id="filter-section">
+      <form method="GET" action="#filter-section" class="filter-bar d-flex flex-wrap align-items-center gap-3 p-3 rounded shadow-sm">
+        <label for="category" class="form-label mb-0 fw-semibold text-dark">
+          <i class="fa-solid fa-filter me-1"></i> Lọc danh mục:
+        </label>
+        <select class="form-select w-auto" name="category" id="category" onchange="this.form.submit()">
+          <option value="0">Tất cả</option>
+          <?php while ($cat = $all_categories->fetch_assoc()): ?>
+            <option value="<?= $cat['id'] ?>" <?= $filter_id == $cat['id'] ? 'selected' : '' ?>>
+              <?= htmlspecialchars($cat['category_name']) ?>
+            </option>
+          <?php endwhile; ?>
+        </select>
+      </form>
+    </section>
+
+
+    <!-- Danh sách các section dịch vụ theo danh mục -->
+    <?php while ($cat = $categories->fetch_assoc()): ?>
+      <section class="service-gallery py-5">
+        <div class="container">
+          <div class="px-2 mb-5">
             <h2 class="section-title px-1">
-                  Chăm sóc da <span class="section-bar-about"></span>
+              <?= htmlspecialchars($cat['category_name']) ?> <span class="section-bar-about"></span>
             </h2>
+          </div>
+
+          <div class="row g-4">
+            <?php
+            $category_id = $cat['id'];
+            $services = $conn->query("SELECT * FROM services WHERE category_id = $category_id");
+            ?>
+
+            <?php while ($row = $services->fetch_assoc()): ?>
+              <div class="col-md-6">
+                <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
+                  <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0" style="max-width: 180px;">
+                    <img src="./assets/images/services/<?= htmlspecialchars($row['image_path']) ?>" alt="<?= htmlspecialchars($row['title']) ?>" class="img-fluid rounded" style="object-fit: cover; width: 100%; height: 100%;">
+                  </div>
+                  <div class="gallery-content d-flex flex-column justify-content-between">
+                    <div>
+                      <h5 class="gallery-title fw-bold"><?= htmlspecialchars($row['title']) ?> <?= $row['duration'] ? '(' . $row['duration'] . ')' : '' ?></h5>
+                      <p class="gallery-desc mb-2 text-muted"><?= mb_strimwidth(strip_tags($row['description']), 0, 150, "...") ?></p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                      <span class="gallery-price fw-bold text-color"><?= number_format($row['price'], 0, ',', '.') ?> VND</span>
+                      <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php endwhile; ?>
+
+            <?php if ($services->num_rows === 0): ?>
+              <div class="col-12 text-muted">Không có dịch vụ nào.</div>
+            <?php endif; ?>
+          </div>
         </div>
-        <div class="row g-4">
-
-          <!-- Gallery Item Start -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image1.jpg" alt="Liệu trình 1" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Chuyên Sâu (90 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Liệu trình chăm sóc đặc biệt giúp cải thiện làn da, ngăn ngừa lão hoá và giữ gìn sự tươi trẻ.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.490.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-          <!-- Gallery Item 2 -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image2.jpg" alt="Liệu trình 2" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Trẻ Hoá RF (75 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Công nghệ nâng cơ không xâm lấn giúp làn da săn chắc, giảm nếp nhăn và kích thích sản sinh collagen.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.200.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-        </div>
-        <div class="row g-4">
-
-          <!-- Gallery Item Start -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image1.jpg" alt="Liệu trình 1" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Chuyên Sâu (90 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Liệu trình chăm sóc đặc biệt giúp cải thiện làn da, ngăn ngừa lão hoá và giữ gìn sự tươi trẻ.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.490.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-          <!-- Gallery Item 2 -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image2.jpg" alt="Liệu trình 2" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Trẻ Hoá RF (75 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Công nghệ nâng cơ không xâm lấn giúp làn da săn chắc, giảm nếp nhăn và kích thích sản sinh collagen.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.200.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery services "Chăm sóc da" -->
-     <!-- 2 -->
-    <section class="service-gallery py-5">
-      <div class="container">
-        <div class="px-2 mb-5 text-end">
-          <h2 class="section-title section-title-right px-1">
-            Công nghệ trị liệu<span class="section-bar-about"></span>
-          </h2>
-        </div>
-
-        <div class="row g-4">
-
-          <!-- Gallery Item Start -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image1.jpg" alt="Liệu trình 1" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Chuyên Sâu (90 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Liệu trình chăm sóc đặc biệt giúp cải thiện làn da, ngăn ngừa lão hoá và giữ gìn sự tươi trẻ.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.490.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-          <!-- Gallery Item 2 -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image2.jpg" alt="Liệu trình 2" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Trẻ Hoá RF (75 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Công nghệ nâng cơ không xâm lấn giúp làn da săn chắc, giảm nếp nhăn và kích thích sản sinh collagen.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.200.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-        </div>
-        <div class="row g-4">
-
-          <!-- Gallery Item Start -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image1.jpg" alt="Liệu trình 1" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Chuyên Sâu (90 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Liệu trình chăm sóc đặc biệt giúp cải thiện làn da, ngăn ngừa lão hoá và giữ gìn sự tươi trẻ.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.490.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-          <!-- Gallery Item 2 -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image2.jpg" alt="Liệu trình 2" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Trẻ Hoá RF (75 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Công nghệ nâng cơ không xâm lấn giúp làn da săn chắc, giảm nếp nhăn và kích thích sản sinh collagen.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.200.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery services "Chăm cơ thể" -->
-     <!-- 3 -->
-    <section class="service-gallery py-5">
-      <div class="container">
-        <div class="px-2 mb-5">
-            <h2 class="section-title px-1">
-                  Chăm cơ thể<span class="section-bar-about"></span>
-            </h2>
-        </div>
-        <div class="row g-4">
-
-          <!-- Gallery Item Start -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image1.jpg" alt="Liệu trình 1" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Chuyên Sâu (90 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Liệu trình chăm sóc đặc biệt giúp cải thiện làn da, ngăn ngừa lão hoá và giữ gìn sự tươi trẻ.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.490.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-          <!-- Gallery Item 2 -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image2.jpg" alt="Liệu trình 2" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Trẻ Hoá RF (75 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Công nghệ nâng cơ không xâm lấn giúp làn da săn chắc, giảm nếp nhăn và kích thích sản sinh collagen.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.200.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-        </div>
-        <div class="row g-4">
-
-          <!-- Gallery Item Start -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image1.jpg" alt="Liệu trình 1" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Chuyên Sâu (90 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Liệu trình chăm sóc đặc biệt giúp cải thiện làn da, ngăn ngừa lão hoá và giữ gìn sự tươi trẻ.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.490.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-          <!-- Gallery Item 2 -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image2.jpg" alt="Liệu trình 2" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Trẻ Hoá RF (75 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Công nghệ nâng cơ không xâm lấn giúp làn da săn chắc, giảm nếp nhăn và kích thích sản sinh collagen.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.200.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery services "Chăm sức khỏe" -->
-     <!-- 4 -->
-    <section class="service-gallery py-5">
-      <div class="container">
-        <div class="px-2 mb-5 text-end">
-          <h2 class="section-title section-title-right px-1">
-            Chăm sóc sức khỏe<span class="section-bar-about"></span>
-          </h2>
-        </div>
-        <div class="row g-4">
-
-          <!-- Gallery Item Start -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image1.jpg" alt="Liệu trình 1" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Chuyên Sâu (90 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Liệu trình chăm sóc đặc biệt giúp cải thiện làn da, ngăn ngừa lão hoá và giữ gìn sự tươi trẻ.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.490.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-          <!-- Gallery Item 2 -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image2.jpg" alt="Liệu trình 2" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Trẻ Hoá RF (75 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Công nghệ nâng cơ không xâm lấn giúp làn da săn chắc, giảm nếp nhăn và kích thích sản sinh collagen.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.200.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-        </div>
-        <div class="row g-4">
-
-          <!-- Gallery Item Start -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image1.jpg" alt="Liệu trình 1" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Chuyên Sâu (90 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Liệu trình chăm sóc đặc biệt giúp cải thiện làn da, ngăn ngừa lão hoá và giữ gìn sự tươi trẻ.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.490.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-          <!-- Gallery Item 2 -->
-          <div class="col-md-6">
-            <div class="gallery-box d-flex flex-column flex-md-row h-100 p-3 shadow-sm rounded-3 bg-white">
-              <div class="gallery-image mb-3 mb-md-0 me-md-3 flex-shrink-0">
-                <img src="./assets/images/gallery-image2.jpg" alt="Liệu trình 2" class="img-fluid rounded">
-              </div>
-              <div class="gallery-content d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="gallery-title fw-bold">Liệu Trình Trẻ Hoá RF (75 phút)</h5>
-                  <p class="gallery-desc mb-2 text-muted">
-                    Công nghệ nâng cơ không xâm lấn giúp làn da săn chắc, giảm nếp nhăn và kích thích sản sinh collagen.
-                  </p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="gallery-price fw-bold text-danger">1.200.000 VND</span>
-                  <a href="#" class="btn-cta btn-sm">Đặt lịch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery Item End -->
-
-        </div>
-      </div>
-    </section>
-
-
-
+      </section>
+    <?php endwhile; ?>
+    
+    <script>
+      window.addEventListener('load', function () {
+        if (window.location.hash === "#filter-section") {
+          const el = document.getElementById("filter-section");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+    </script>
 
     <!-- Footer section -->
     <footer class="footer-section text-white pt-5 pb-4 position-relative">
@@ -608,12 +268,8 @@
         </div>
       </div>
     </footer>
-
-
-
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
 
     <!-- Bootstrap Bundle JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

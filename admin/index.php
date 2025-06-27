@@ -23,7 +23,7 @@
   <!-- Navbar/Header -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top px-0 py-0 border-bottom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="#!">
           <img src="../assets/images/logo_removebg.png" alt="Logo" />
           <span>Spa Beauty</span>
         </a>
@@ -74,16 +74,13 @@
                 <div class="position-sticky">
                 <ul class="nav flex-column mt-4">
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Quản lý người dùng</a>
+                    <a class="nav-link" href="./customers.php">Quản lý người dùng</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Quản lý dịch vụ</a>
+                    <a class="nav-link" href="./services.php">Quản lý dịch vụ</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Lịch hẹn</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Thêm dịch vụ</a>
+                    <a class="nav-link" href="./appointments.php">Lịch hẹn</a>
                     </li>
                 </ul>
                 </div>

@@ -1,8 +1,9 @@
+<?php include "../includes/connect.php";?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8" />
-    <title>Trang chủ</title>
+    <title>Khách hàng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../assets/css/style-admin.css?v=<?= time(); ?>" />
 
@@ -23,7 +24,7 @@
   <!-- Navbar/Header -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top px-0 py-0 border-bottom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="./index.php">
           <img src="../assets/images/logo_removebg.png" alt="Logo" />
           <span>Spa Beauty</span>
         </a>
@@ -57,10 +58,9 @@
                 <i class="fa-solid fa-circle-user"></i>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="./user/login.php">Đăng nhập</a></li>
-                <li><a class="dropdown-item" href="./user/register.php">Đăng ký</a></li>
+                <li><a class="dropdown-item" href="../user/login.php">Đăng nhập</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="./user/logout.php">Đăng xuất</a></li>
+                <li><a class="dropdown-item" href="../user/logout.php">Đăng xuất</a></li>
               </ul>
             </li>
           </ul>
@@ -75,16 +75,13 @@
         <div class="position-sticky">
           <ul class="nav flex-column mt-4">
             <li class="nav-item">
-              <a class="nav-link" href="#">Quản lý người dùng</a>
+              <a class="nav-link" href="#!">Quản lý người dùng</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Quản lý dịch vụ</a>
+              <a class="nav-link" href="./services.php">Quản lý dịch vụ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Lịch hẹn</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Thêm dịch vụ</a>
+              <a class="nav-link" href="./appointments.php">Lịch hẹn</a>
             </li>
           </ul>
         </div>
@@ -92,8 +89,76 @@
       <!-- Main Content -->
       <main class="col-lg-10 offset-lg-2 col-md-9 offset-md-3 ms-sm-auto px-md-4 main-content">
         <!-- Insert your admin content here -->
-        <h1 class="h3 mb-4">Welcome to the Admin Dashboard</h1>
-        <p>This is your main content area. Add your dashboard widgets, tables, or forms here.</p>
+        <section class="container mt-5">
+          <h2 class="mb-4">Danh sách người dùng</h2>
+          <table class="table table-bordered table-hover text-center align-middle">
+            <thead class="table-warning">
+              <tr>
+                <th>STT</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                $sql = "SELECT * FROM users ORDER BY id ASC";
+                $result = $conn->query($sql); 
+                $i = 1; 
+                if ($result->num_rows > 0): 
+                  while ($row = $result->fetch_assoc()):
+                    if ($row['role'] === 'admin') continue; //
+              ?>
+              <tr>
+                <td><?= $i++ ?></td>
+                <td><?= htmlspecialchars($row['full_name']) ?></td>
+                <td><?= htmlspecialchars($row['email']) ?></td>
+                <td><?= htmlspecialchars($row['password']) ?></td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm btn-delete-user"
+                    data-user-id="<?= $row['id'] ?>"
+                    data-bs-toggle="modal"
+                    data-bs-target="#confirmDeleteModal"
+                  >
+                    Xoá
+                  </button>
+                </td>
+
+              </tr>
+              <?php endwhile; else: ?>
+              <tr>
+                <td colspan="5">Không có người dùng nào</td>
+              </tr>
+              <?php endif; ?>
+            </tbody>
+          </table>
+          
+        </section>
+        <!-- Modal xác nhận xoá -->
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <form method="POST" action="./customers-delete.php">
+              <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                  <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xoá</h5>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body">
+                  Bạn có chắc chắn muốn xoá người dùng này không?
+                </div>
+                <input type="hidden" name="user_id" id="deleteUserId">
+                <input type="hidden" name="redirect" value="customers.php"> <!-- để chuyển hướng về lại trang -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                  <button type="submit" class="btn btn-danger">Xác nhận xoá</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </main>
     </div>
   </div>
@@ -103,7 +168,13 @@
 
     <!-- Bootstrap Bundle JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+      $('#confirmDeleteModal').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget);
+        const userId = button.data('user-id');
+        $(this).find('#deleteUserId').val(userId);
+      });
+    </script>
     <!-- File script riêng -->
     <script src="../assets/js/main-admin.js"></script>
 </body>

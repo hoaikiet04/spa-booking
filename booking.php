@@ -1,3 +1,28 @@
+<?php
+// Kết nối CSDL
+require_once './includes/connect.php';
+
+// Lấy danh sách loại dịch vụ
+$categories = $conn->query("SELECT * FROM service_categories");
+
+// Lấy danh sách dịch vụ chi tiết
+$services = $conn->query("SELECT * FROM services");
+
+// Chuyển về dạng mảng để dễ xử lý khi dùng JavaScript
+$serviceList = [];
+while ($row = $services->fetch_assoc()) {
+    $serviceList[] = $row;
+}
+?>
+<?php
+session_start();
+
+$success = $_SESSION['success'] ?? false;
+$error = $_SESSION['error'] ?? null;
+$booking_data = $_SESSION['booking_data'] ?? [];
+
+unset($_SESSION['success'], $_SESSION['error'], $_SESSION['booking_data']);
+?>
 <!DOCTYPE html>
 <html lang="vi">
   <head>
@@ -100,43 +125,24 @@
               <!-- 2. Service Selection Section -->
               <div class="mb-4">
                 <h5 class="mb-3 fw-semibold">Chọn dịch vụ</h5>
-                <div class="row g-3 align-items-end">
+                <div class="row g-3">
+                  <!-- Loại dịch vụ -->
                   <div class="col-md-6">
-                    <label for="service" class="form-label">Dịch vụ <span class="text-danger">*</span></label>
-                    <select class="form-select" id="service" name="service" required>
-                      <option value="" selected disabled>-- Chọn dịch vụ --</option>
-                      <option value="skin">Chăm sóc da</option>
-                      <option value="body">Chăm sóc cơ thể</option>
-                      <option value="antiaging">Chống lão hóa</option>
-                      <option value="wellness">Wellness</option>
+                    <label for="service_category" class="form-label">Loại dịch vụ <span class="text-danger">*</span></label>
+                    <select class="form-select" id="service_category" name="category_id" required>
+                      <option value="" selected disabled>-- Chọn loại dịch vụ --</option>
+                      <?php while ($cat = $categories->fetch_assoc()): ?>
+                        <option value="<?= $cat['id'] ?>"><?= htmlspecialchars($cat['category_name']) ?></option>
+                      <?php endwhile; ?>
                     </select>
                   </div>
-                  <!-- 2. Service Selection Section -->
-                  <div class="mb-4">
-                    <h5 class="mb-3 fw-semibold">Chọn dịch vụ</h5>
-                    <div class="row g-3">
-                      <!-- Loại dịch vụ -->
-                      <div class="col-md-6">
-                        <label for="service_category" class="form-label">Loại dịch vụ <span class="text-danger">*</span></label>
-                        <select class="form-select" id="service_category" name="service_category" required>
-                          <option value="" selected disabled>-- Chọn loại dịch vụ --</option>
-                          <option value="skin">Chăm sóc da</option>
-                          <option value="body">Chăm sóc cơ thể</option>
-                          <option value="antiaging">Chống lão hóa</option>
-                          <option value="wellness">Wellness</option>
-                        </select>
-                      </div>
-
-                      <!-- Dịch vụ cụ thể -->
-                      <div class="col-md-6">
-                        <label for="service_detail" class="form-label">Dịch vụ cụ thể <span class="text-danger">*</span></label>
-                        <select class="form-select" id="service_detail" name="service_detail" required>
-                          <option value="" selected disabled>-- Vui lòng chọn loại dịch vụ trước --</option>
-                        </select>
-                      </div>
-                    </div>
+                  <!-- Dịch vụ cụ thể -->
+                  <div class="col-md-6">
+                    <label for="service_detail" class="form-label">Dịch vụ cụ thể <span class="text-danger">*</span></label>
+                    <select class="form-select" id="service_detail" name="service_id" required>
+                      <option value="" selected disabled>-- Vui lòng chọn loại dịch vụ trước --</option>
+                    </select>
                   </div>
-
                 </div>
               </div>
               <!-- 3. Booking Time Section -->
@@ -179,14 +185,12 @@
                   </label>
                 </div>
               </div>
-
               <!-- 5. Notes Section -->
               <div class="mb-4">
                 <h5 class="mb-3 fw-semibold">Ghi chú</h5>
                 <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Yêu cầu thêm, dị ứng, v.v. (nếu có)"></textarea>
               </div>
-              <!-- 6. Summary Section -->
-              <!-- 7. Submit Button -->
+              <!-- 6. Submit Button -->
               <div class="d-grid">
                 <button type="submit" class="btn-cta btn-lg fw-bold">Xác nhận đặt lịch</button>
               </div>
@@ -196,6 +200,33 @@
       </div>
     </section>
     <!-- Spa Booking Form End -->
+    
+    <script>
+      // Dữ liệu dịch vụ từ PHP sang JavaScript
+      const serviceList = <?= json_encode($serviceList) ?>;
+
+      const categorySelect = document.getElementById('service_category');
+      const serviceSelect = document.getElementById('service_detail');
+
+      categorySelect.addEventListener('change', function () {
+        const selectedCategoryId = this.value;
+
+        // Xóa dịch vụ cũ
+        serviceSelect.innerHTML = '<option value="" disabled selected>-- Chọn dịch vụ --</option>';
+
+        // Lọc và hiển thị dịch vụ mới
+        serviceList.forEach(service => {
+          if (service.category_id == selectedCategoryId) {
+            const option = document.createElement('option');
+            option.value = service.id;
+            option.textContent = service.title;
+            serviceSelect.appendChild(option);
+          }
+        });
+
+        serviceSelect.disabled = false;
+      });
+    </script>
 
     <!-- Footer section -->
     <footer class="footer-section text-white pt-5 pb-4 position-relative">
@@ -242,15 +273,11 @@
       </div>
     </footer>
 
-
-
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-
     <!-- Bootstrap Bundle JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 
     <!-- File script riêng -->
     <script src="./assets/js/main.js"></script>
