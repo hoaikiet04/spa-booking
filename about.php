@@ -21,51 +21,56 @@
   <body>
     <!-- Navbar -->
     <!-- Navbar/Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top px-0 px-lg-5 py-0">
+    <?php session_start(); ?>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top px-3 px-lg-5 py-2">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="./assets/images/logo_removebg.png" alt="Logo" />
-          <span>Spa Beauty</span>
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="./index.php">
+          <img src="./assets/images/logo_removebg.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+          <span class="fw-bold text-warning fs-4">Spa Beauty</span>
         </a>
 
-        <!-- Nút toggle cho mobile -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <!-- Toggle Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menu khi toggle -->
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="./index.php">TRANG CHỦ</a></li>
-            <li class="nav-item"><a class="nav-link" href="./about.php">GIỚI THIỆU</a></li>
-            <li class="nav-item"><a class="nav-link" href="./services.php">DỊCH VỤ</a></li>
-            <li class="nav-item"><a class="nav-link" href="./booking.php">ĐẶT LỊCH</a></li>
-            
-            <!-- Dropdown người dùng -->
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="userDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i class="fa-solid fa-circle-user"></i>
+        <!-- Menu -->
+        <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarNav">
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item px-2"><a class="nav-link" href="./index.php">TRANG CHỦ</a></li>
+            <li class="nav-item px-2"><a class="nav-link" href="./about.php">GIỚI THIỆU</a></li>
+            <li class="nav-item px-2"><a class="nav-link" href="./services.php">DỊCH VỤ</a></li>
+            <li class="nav-item px-2"><a class="nav-link" href="./booking.php">ĐẶT LỊCH</a></li>
+
+            <!-- Xin chào -->
+            <li class="nav-item px-2 text-secondary small d-none d-lg-block">
+              <?php if (isset($_SESSION['user_fullname'])): ?>
+                Xin chào, <strong><?= htmlspecialchars($_SESSION['user_fullname']) ?></strong>
+              <?php else: ?>
+                Xin chào!
+              <?php endif; ?>
+            </li>
+
+            <!-- Avatar Dropdown -->
+            <li class="nav-item dropdown px-2">
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-circle-user fa-lg"></i>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="./user/login.php">Đăng nhập</a></li>
-                <li><a class="dropdown-item" href="./user/register.php">Đăng ký</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="./user/logout.php">Đăng xuất</a></li>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                  <li><a class="dropdown-item" href="#">Tài khoản của tôi</a></li>
+                  <?php if ($_SESSION['user_role'] === 'admin'): ?>
+                    <li><a class="dropdown-item" href="./admin/dashboard.php">Trang quản trị</a></li>
+                  <?php endif; ?>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="./user/logout.php">Đăng xuất</a></li>
+                <?php else: ?>
+                  <li><a class="dropdown-item" href="./user/login.php">Đăng nhập</a></li>
+                  <li><a class="dropdown-item" href="./user/register.php">Đăng ký</a></li>
+                <?php endif; ?>
               </ul>
             </li>
           </ul>
@@ -180,81 +185,80 @@
     </section>
     <!-- Facilities Section -->
     <section class="facilities-section py-5">
-    <div class="container">
-    <div class="px-2 mb-5">
-        <h2 class="section-title px-1">
-                  CƠ SỞ HIỆN ĐẠI <span class="section-bar-about"></span>
-            </h2>
-        </div>
-        <div class="facility-list">
-        <!-- Facility 1 -->
-        <div class="row facility-row align-items-center mb-5">
-            <div class="col-md-6">
-            <img src="./assets/images/facility1.jpg" alt="Không gian Spa" class="facility-img img-fluid rounded-3 shadow" />
-            </div>
-            <div class="col-md-6">
-            <div class="facility-info facility-info-right bg-white shadow-sm">
-                <div class="facility-date"></div>
-                <div class="facility-name fw-bold">KHÔNG GIAN ĐẲNG CẤP - THIẾT KẾ ĐỘC ĐÁO</div>
-                <div class="facility-desc">
-                Bước vào Spa Beauty, quý khách sẽ ngay lập tức cảm nhận được sự khác biệt từ không gian. Chúng tôi đã kiến tạo nên một ốc đảo yên bình với thiết kế tinh tế, kết hợp hài hòa giữa nét hiện đại và vẻ đẹp tự nhiên, tạo nên một không gian thư giãn lý tưởng, sang trọng mà vẫn ấm cúng. Mọi chi tiết, từ ánh sáng dịu nhẹ, hương thơm thư thái đến âm nhạc êm dịu, đều được chăm chút tỉ mỉ để đánh thức mọi giác quan, mang đến trải nghiệm nghỉ dưỡng hoàn hảo ngay giữa lòng thành phố.
+      <div class="container">
+        <div class="px-2 mb-5">
+          <h2 class="section-title px-1">
+                    CƠ SỞ HIỆN ĐẠI <span class="section-bar-about"></span>
+              </h2>
+          </div>
+          <div class="facility-list">
+          <!-- Facility 1 -->
+          <div class="row facility-row align-items-center mb-5">
+              <div class="col-md-6">
+              <img src="./assets/images/facility1.jpg" alt="Không gian Spa" class="facility-img img-fluid rounded-3 shadow" />
+              </div>
+              <div class="col-md-6">
+              <div class="facility-info facility-info-right bg-white shadow-sm">
+                  <div class="facility-date"></div>
+                  <div class="facility-name fw-bold">KHÔNG GIAN ĐẲNG CẤP - THIẾT KẾ ĐỘC ĐÁO</div>
+                  <div class="facility-desc">
+                  Bước vào Spa Beauty, quý khách sẽ ngay lập tức cảm nhận được sự khác biệt từ không gian. Chúng tôi đã kiến tạo nên một ốc đảo yên bình với thiết kế tinh tế, kết hợp hài hòa giữa nét hiện đại và vẻ đẹp tự nhiên, tạo nên một không gian thư giãn lý tưởng, sang trọng mà vẫn ấm cúng. Mọi chi tiết, từ ánh sáng dịu nhẹ, hương thơm thư thái đến âm nhạc êm dịu, đều được chăm chút tỉ mỉ để đánh thức mọi giác quan, mang đến trải nghiệm nghỉ dưỡng hoàn hảo ngay giữa lòng thành phố.
+                  </div>
+              </div>
+              </div>
+          </div>
+          <!-- Facility 2 (reverse) -->
+          <div class="row facility-row align-items-center mb-5 flex-md-row-reverse">
+              <div class="col-md-6">
+                <img src="./assets/images/facility2.jpg" alt="Bể bơi ngâm mình" class="facility-img img-fluid rounded-3 shadow" />
+              </div>
+              <div class="col-md-6">
+                <div class="facility-info facility-info-left bg-highlight shadow-sm">
+                    <div class="facility-date"></div>
+                    <div class="facility-name fw-bold">CÔNG NGHỆ HIỆN ĐẠI - HIỆU QUẢ TỐI ƯU</div>
+                    <div class="facility-desc">
+                    Spa Beauty tự hào dẫn đầu xu hướng làm đẹp với việc đầu tư vào hệ thống máy móc, trang thiết bị công nghệ cao tiên tiến nhất thế giới. Từ các thiết bị trẻ hóa da không xâm lấn, máy móc chăm sóc cơ thể chuyên sâu cho đến các công nghệ trị liệu chuyên biệt, tất cả đều được nhập khẩu chính hãng, đạt chuẩn quốc tế và được kiểm định nghiêm ngặt. Sự kết hợp giữa công nghệ đỉnh cao và kỹ thuật chuyên nghiệp đảm bảo mang đến cho quý khách những liệu trình an toàn, hiệu quả vượt trội và kết quả rõ rệt ngay từ lần đầu trải nghiệm.                </div>
                 </div>
-            </div>
-            </div>
-        </div>
-        <!-- Facility 2 (reverse) -->
-        <div class="row facility-row align-items-center mb-5 flex-md-row-reverse">
-            <div class="col-md-6">
-              <img src="./assets/images/facility2.jpg" alt="Bể bơi ngâm mình" class="facility-img img-fluid rounded-3 shadow" />
-            </div>
-            <div class="col-md-6">
+              </div>
+          </div>
+          <!-- Facility 3 -->
+          <div class="row facility-row align-items-center mb-5">
+              <div class="col-md-6">
+              <img src="./assets/images/facility3.jpg" alt="Massage trị liệu" class="facility-img img-fluid rounded-3 shadow" />
+              </div>
+              <div class="col-md-6">
+              <div class="facility-info facility-info-right bg-white shadow-sm">
+                  <div class="facility-date"></div>
+                  <div class="facility-name fw-bold">SẢN PHẨM CAO CẤP - TINH HOA TỪ THIÊN NHIÊN</div>
+                  <div class="facility-desc">
+                  Chất lượng dịch vụ tại Spa Beauty còn được khẳng định qua nguồn gốc và thành phần của từng sản phẩm chúng tôi sử dụng. Chúng tôi chỉ tin dùng các dòng mỹ phẩm và tinh chất trị liệu đến từ những thương hiệu danh tiếng toàn cầu, được chiết xuất từ thiên nhiên và đã qua kiểm nghiệm lâm sàng khắt khe. Mỗi sản phẩm đều được lựa chọn kỹ lưỡng để phù hợp với từng loại da, từng vấn đề cụ thể, đảm bảo cung cấp dưỡng chất tinh túy nhất, nâng cao hiệu quả trị liệu và nuôi dưỡng làn da, cơ thể bạn từ sâu bên trong.                </div>
+              </div>
+              </div>
+          </div>
+          <!-- Facility 4 (reverse) -->
+          <div class="row facility-row align-items-center mb-5 flex-md-row-reverse">
+              <div class="col-md-6">
+              <img src="./assets/images/facility4.jpg" alt="Phòng chờ - thư giãn" class="facility-img img-fluid rounded-3 shadow" />
+              </div>
+              <div class="col-md-6">
               <div class="facility-info facility-info-left bg-highlight shadow-sm">
                   <div class="facility-date"></div>
-                  <div class="facility-name fw-bold">CÔNG NGHỆ HIỆN ĐẠI - HIỆU QUẢ TỐI ƯU</div>
+                  <div class="facility-name fw-bold">ĐỘI NGŨ TẬN TÂM - TAY NGHỀ ĐỈNH CAO</div>
                   <div class="facility-desc">
-                  Spa Beauty tự hào dẫn đầu xu hướng làm đẹp với việc đầu tư vào hệ thống máy móc, trang thiết bị công nghệ cao tiên tiến nhất thế giới. Từ các thiết bị trẻ hóa da không xâm lấn, máy móc chăm sóc cơ thể chuyên sâu cho đến các công nghệ trị liệu chuyên biệt, tất cả đều được nhập khẩu chính hãng, đạt chuẩn quốc tế và được kiểm định nghiêm ngặt. Sự kết hợp giữa công nghệ đỉnh cao và kỹ thuật chuyên nghiệp đảm bảo mang đến cho quý khách những liệu trình an toàn, hiệu quả vượt trội và kết quả rõ rệt ngay từ lần đầu trải nghiệm.                </div>
+                  Trái tim của Spa Beauty chính là đội ngũ chuyên gia trị liệu giàu kinh nghiệm, được đào tạo bài bản theo tiêu chuẩn quốc tế và luôn cập nhật những xu hướng làm đẹp mới nhất. Với sự am hiểu sâu sắc về cấu trúc da, kỹ thuật massage điêu luyện và khả năng lắng nghe tinh tế, mỗi chuyên viên của chúng tôi không chỉ thực hiện liệu trình mà còn là người tư vấn tận tâm, đồng hành cùng quý khách trên hành trình tìm lại vẻ đẹp và sự tự tin. Sự chuyên nghiệp, tỉ mỉ và thái độ phục vụ chu đáo chính là cam kết của chúng tôi cho mỗi trải nghiệm của bạn.                </div>
               </div>
-            </div>
+              </div>
+          </div>
         </div>
-        <!-- Facility 3 -->
-        <div class="row facility-row align-items-center mb-5">
-            <div class="col-md-6">
-            <img src="./assets/images/facility3.jpg" alt="Massage trị liệu" class="facility-img img-fluid rounded-3 shadow" />
-            </div>
-            <div class="col-md-6">
-            <div class="facility-info facility-info-right bg-white shadow-sm">
-                <div class="facility-date"></div>
-                <div class="facility-name fw-bold">SẢN PHẨM CAO CẤP - TINH HOA TỪ THIÊN NHIÊN</div>
-                <div class="facility-desc">
-                Chất lượng dịch vụ tại Spa Beauty còn được khẳng định qua nguồn gốc và thành phần của từng sản phẩm chúng tôi sử dụng. Chúng tôi chỉ tin dùng các dòng mỹ phẩm và tinh chất trị liệu đến từ những thương hiệu danh tiếng toàn cầu, được chiết xuất từ thiên nhiên và đã qua kiểm nghiệm lâm sàng khắt khe. Mỗi sản phẩm đều được lựa chọn kỹ lưỡng để phù hợp với từng loại da, từng vấn đề cụ thể, đảm bảo cung cấp dưỡng chất tinh túy nhất, nâng cao hiệu quả trị liệu và nuôi dưỡng làn da, cơ thể bạn từ sâu bên trong.                </div>
-            </div>
-            </div>
-        </div>
-        <!-- Facility 4 (reverse) -->
-        <div class="row facility-row align-items-center mb-5 flex-md-row-reverse">
-            <div class="col-md-6">
-            <img src="./assets/images/facility4.jpg" alt="Phòng chờ - thư giãn" class="facility-img img-fluid rounded-3 shadow" />
-            </div>
-            <div class="col-md-6">
-            <div class="facility-info facility-info-left bg-highlight shadow-sm">
-                <div class="facility-date"></div>
-                <div class="facility-name fw-bold">ĐỘI NGŨ TẬN TÂM - TAY NGHỀ ĐỈNH CAO</div>
-                <div class="facility-desc">
-                Trái tim của Spa Beauty chính là đội ngũ chuyên gia trị liệu giàu kinh nghiệm, được đào tạo bài bản theo tiêu chuẩn quốc tế và luôn cập nhật những xu hướng làm đẹp mới nhất. Với sự am hiểu sâu sắc về cấu trúc da, kỹ thuật massage điêu luyện và khả năng lắng nghe tinh tế, mỗi chuyên viên của chúng tôi không chỉ thực hiện liệu trình mà còn là người tư vấn tận tâm, đồng hành cùng quý khách trên hành trình tìm lại vẻ đẹp và sự tự tin. Sự chuyên nghiệp, tỉ mỉ và thái độ phục vụ chu đáo chính là cam kết của chúng tôi cho mỗi trải nghiệm của bạn.                </div>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
+      </div>
     </section>
-
 
     <!-- Footer section -->
     <footer class="footer-section text-white pt-5 pb-4 position-relative">
       <div class="footer-bg"></div>
       <div class="container position-relative z-2">
         <div class="row g-4">
-          
+
           <!-- Giới thiệu -->
           <div class="col-md-4">
             <div class="d-flex align-items-center mb-3">
@@ -272,7 +276,7 @@
           </div>
 
           <!-- Liên hệ -->
-          <div class="col-md-4 m">
+          <div class="col-md-4">
             <h5 class="footer-title mb-3">LIÊN HỆ</h5>
             <p class="mb-2">Mọi thông tin liên hệ, thắc mắc, xin liên hệ chúng tôi:</p>
             <ul class="footer-contact-list">
@@ -285,8 +289,14 @@
           <!-- Fanpage -->
           <div class="col-md-4">
             <h5 class="footer-title mb-3">KẾT NỐI FANPAGE</h5>
-            <div class="footer-fanpage">
-              
+            <div class="ratio ratio-16x9">
+              <iframe
+                src="https://www.youtube.com/embed/tS0aUJGCFpM"
+                title="LÉA BEAUTY SPA - SPA CHUẨN CHUYÊN NGHIỆP QUẬN 2"
+                allowfullscreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin">
+              </iframe>
             </div>
           </div>
 
@@ -294,16 +304,10 @@
       </div>
     </footer>
 
-
-
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-
     <!-- Bootstrap Bundle JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
     <!-- File script riêng -->
     <script src="./assets/js/main.js"></script>
   </body>

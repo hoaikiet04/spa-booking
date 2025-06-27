@@ -37,51 +37,56 @@ if ($filter_id > 0) {
   </head>
   <body>
     <!-- Navbar/Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top px-0 px-lg-5 py-0">
+    <?php session_start(); ?>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top px-3 px-lg-5 py-2">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="./assets/images/logo_removebg.png" alt="Logo" />
-          <span>Spa Beauty</span>
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="./index.php">
+          <img src="./assets/images/logo_removebg.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+          <span class="fw-bold text-warning fs-4">Spa Beauty</span>
         </a>
 
-        <!-- Nút toggle cho mobile -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <!-- Toggle Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menu khi toggle -->
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="./index.php">TRANG CHỦ</a></li>
-            <li class="nav-item"><a class="nav-link" href="./about.php">GIỚI THIỆU</a></li>
-            <li class="nav-item"><a class="nav-link" href="./services.php">DỊCH VỤ</a></li>
-            <li class="nav-item"><a class="nav-link" href="./booking.php">ĐẶT LỊCH</a></li>
-            
-            <!-- Dropdown người dùng -->
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="userDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i class="fa-solid fa-circle-user"></i>
+        <!-- Menu -->
+        <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarNav">
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item px-2"><a class="nav-link" href="./index.php">TRANG CHỦ</a></li>
+            <li class="nav-item px-2"><a class="nav-link" href="./about.php">GIỚI THIỆU</a></li>
+            <li class="nav-item px-2"><a class="nav-link" href="./services.php">DỊCH VỤ</a></li>
+            <li class="nav-item px-2"><a class="nav-link" href="./booking.php">ĐẶT LỊCH</a></li>
+
+            <!-- Xin chào -->
+            <li class="nav-item px-2 text-secondary small d-none d-lg-block">
+              <?php if (isset($_SESSION['user_fullname'])): ?>
+                Xin chào, <strong><?= htmlspecialchars($_SESSION['user_fullname']) ?></strong>
+              <?php else: ?>
+                Xin chào!
+              <?php endif; ?>
+            </li>
+
+            <!-- Avatar Dropdown -->
+            <li class="nav-item dropdown px-2">
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-circle-user fa-lg"></i>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="./user/login.php">Đăng nhập</a></li>
-                <li><a class="dropdown-item" href="./user/register.php">Đăng ký</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="./user/logout.php">Đăng xuất</a></li>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                  <li><a class="dropdown-item" href="#">Tài khoản của tôi</a></li>
+                  <?php if ($_SESSION['user_role'] === 'admin'): ?>
+                    <li><a class="dropdown-item" href="./admin/dashboard.php">Trang quản trị</a></li>
+                  <?php endif; ?>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="./user/logout.php">Đăng xuất</a></li>
+                <?php else: ?>
+                  <li><a class="dropdown-item" href="./user/login.php">Đăng nhập</a></li>
+                  <li><a class="dropdown-item" href="./user/register.php">Đăng ký</a></li>
+                <?php endif; ?>
               </ul>
             </li>
           </ul>
@@ -109,7 +114,7 @@ if ($filter_id > 0) {
             <h2 class="section-title">
               DỊCH VỤ <span class="section-bar"></span>
             </h2>
-            <div class="section-subtitle fw-bold">Tiêu biểu</div>
+            <div class="section-subtitle fw-bold"></div>
           </div>
         </div>
         <div class="row justify-content-center text-center">
@@ -170,7 +175,6 @@ if ($filter_id > 0) {
       </form>
     </section>
 
-
     <!-- Danh sách các section dịch vụ theo danh mục -->
     <?php while ($cat = $categories->fetch_assoc()): ?>
       <section class="service-gallery py-5">
@@ -229,7 +233,7 @@ if ($filter_id > 0) {
       <div class="footer-bg"></div>
       <div class="container position-relative z-2">
         <div class="row g-4">
-          
+
           <!-- Giới thiệu -->
           <div class="col-md-4">
             <div class="d-flex align-items-center mb-3">
@@ -247,7 +251,7 @@ if ($filter_id > 0) {
           </div>
 
           <!-- Liên hệ -->
-          <div class="col-md-4 m">
+          <div class="col-md-4">
             <h5 class="footer-title mb-3">LIÊN HỆ</h5>
             <p class="mb-2">Mọi thông tin liên hệ, thắc mắc, xin liên hệ chúng tôi:</p>
             <ul class="footer-contact-list">
@@ -260,14 +264,21 @@ if ($filter_id > 0) {
           <!-- Fanpage -->
           <div class="col-md-4">
             <h5 class="footer-title mb-3">KẾT NỐI FANPAGE</h5>
-            <div class="footer-fanpage">
-              
+            <div class="ratio ratio-16x9">
+              <iframe
+                src="https://www.youtube.com/embed/tS0aUJGCFpM"
+                title="LÉA BEAUTY SPA - SPA CHUẨN CHUYÊN NGHIỆP QUẬN 2"
+                allowfullscreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin">
+              </iframe>
             </div>
           </div>
 
         </div>
       </div>
     </footer>
+
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 

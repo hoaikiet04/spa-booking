@@ -1164,3 +1164,6 @@ body {
 .text-color {
   color: #ecc77e !important;
 }
+.border-success {
+  border: #d49c3d solid 1px;
+}

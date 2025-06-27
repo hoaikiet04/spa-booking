@@ -6,31 +6,40 @@
   <title>Đăng ký</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
-    body, html {
-      height: 100%;
+    html, body {
       margin: 0;
-      background: url('../assets/images/background-signup.jpg') no-repeat center center fixed;
-      background-size: cover;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
     }
 
-    .blur-background {
-      position: absolute;
+    /* Lớp nền riêng biệt chứa ảnh và hiệu ứng blur */
+    .background-wrapper {
+      position: fixed;
       top: 0;
       left: 0;
-      height: 100%;
-      width: 100%;
-      backdrop-filter: blur(6px);
-      background-color: rgba(255, 255, 255, 0.2);
+      width: 100vw;
+      height: 100vh;
+      background-image: url('../assets/images/background-signup.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(6px) brightness(0.9);
       z-index: 0;
+    }
+
+    /* Căn giữa form đăng ký */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .signup-container {
       position: relative;
       z-index: 1;
+      width: 100%;
       max-width: 450px;
-      margin: auto;
       padding: 40px;
-      margin-top: 80px;
       background: white;
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -47,7 +56,7 @@
 
     .btn-signup {
       border-radius: 10px;
-      background-color:rgb(245, 191, 120);
+      background-color: rgb(245, 191, 120);
       color: white;
     }
 
@@ -71,25 +80,28 @@
   </style>
 </head>
 <body>
-  <div class="blur-background"></div>
+  <!-- Nền mờ -->
+  <div class="background-wrapper"></div>
 
+  <!-- Form đăng ký -->
   <div class="signup-container">
     <h2>ĐĂNG KÝ</h2>
-    <form>
+    <form action="register_submit.php" method="POST">
       <div class="mb-3">
         <label for="fullname" class="form-label">Họ và Tên</label>
-        <input type="text" class="form-control" id="fullname" placeholder="Ví dụ: Nguyễn Văn A" />
+        <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Ví dụ: Nguyễn Văn A" required />
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Ví dụ: nguyenvana@email.com" />
+        <input type="email" class="form-control" id="email" name="email" placeholder="Ví dụ: nguyenvana@gmail.com" required />
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu ..." />
+        <input type="password" class="form-control" id="password" name="password" placeholder="Vui lòng nhập mật khẩu" required />
       </div>
       <button type="submit" class="btn btn-signup w-100">Đăng ký</button>
     </form>
+
     <div class="login-text">
       Bạn đã có tài khoản? <a href="./login.php">Đăng nhập</a>
     </div>
