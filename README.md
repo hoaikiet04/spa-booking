@@ -59,22 +59,31 @@ Các kỹ năng & nhiệm vụ chính:
 ---
 ## 🎥 Demo & Hình ảnh dự án
 
-### Trang chủ & Danh sách dịch vụ
-![Trang chủ](screenshots/homepage.png)
-![Danh sách dịch vụ](screenshots/services.png)
+### 1. Trang chủ
+![Trang chủ Spa Beauty](assets/images/homepage_1.png)
+> Giao diện chính với hình nền spa sang trọng, tone vàng-trắng chủ đạo.
 
-### Form đặt lịch
-![Form đặt lịch](screenshots/booking-form.png)
-![Xác nhận đặt lịch thành công](screenshots/booking-success.png)
+### 2. Danh sách & bộ lọc dịch vụ
+![Danh sách dịch vụ](assets/images/services.png)
+![Bộ lọc dịch vụ](assets/images/homepage_2.png)
+> Hiển thị các gói dịch vụ kèm ảnh minh họa, giá tiền và nút đặt lịch nhanh.
 
-### Khu vực người dùng
-![Lịch sử đặt lịch](screenshots/user-bookings.png)
+### 3. Form đặt lịch
+![Form đặt lịch](assets/images/booking-form.png)
+![Thông báo đặt lịch thành công](assets/images/booking-success_1.png)
+> Form đầy đủ thông tin, chọn dịch vụ – ngày giờ – phương thức thanh toán + modal xác nhận nhẹ nhàng.
 
-### Admin Dashboard
-![Dashboard admin](screenshots/admin-dashboard.png)
-![Quản lý dịch vụ](screenshots/admin-services.png)
-![Quản lý lịch đặt](screenshots/admin-bookings.png)
+### 4. Đăng ký & Đăng nhập
+![Đăng ký](assets/images/logon.png)
+![Đăng nhập](assets/images/login.png)
+> Modal overlay trên nền hình spa thư giãn, rất bắt mắt và chuyên nghiệp.
 
+### 5. Admin Dashboard
+![Admin Dashboard](assets/images/admin-dashboard.png)
+![Quản lý người dùng](assets/images/admin-bookings.png)
+![Quản lý dịch vụ](assets/images/admin-services.png)
+> Giao diện quản trị rõ ràng, dễ sử dụng.
+> 
 ---
 ## 🏗️ Kiến trúc & cấu trúc dự án
 
