@@ -57,7 +57,25 @@ Các kỹ năng & nhiệm vụ chính:
 * Đảm bảo dự án hoàn thành đúng hạn với chất lượng tốt nhất trong phạm vi.
 
 ---
+## 🎥 Demo & Hình ảnh dự án
 
+### Trang chủ & Danh sách dịch vụ
+![Trang chủ](screenshots/homepage.png)
+![Danh sách dịch vụ](screenshots/services.png)
+
+### Form đặt lịch
+![Form đặt lịch](screenshots/booking-form.png)
+![Xác nhận đặt lịch thành công](screenshots/booking-success.png)
+
+### Khu vực người dùng
+![Lịch sử đặt lịch](screenshots/user-bookings.png)
+
+### Admin Dashboard
+![Dashboard admin](screenshots/admin-dashboard.png)
+![Quản lý dịch vụ](screenshots/admin-services.png)
+![Quản lý lịch đặt](screenshots/admin-bookings.png)
+
+---
 ## 🏗️ Kiến trúc & cấu trúc dự án
 
 ```bash
@@ -209,4 +227,3 @@ Trong quá trình phát triển, nhóm áp dụng quy trình tối giản:
 * **Nguyễn Thanh Sơn / Huỳnh Minh Chương – Backend Developer**
 
 * **Trần Thị Mỹ Ngân – Database Designer / Tester**
-
