@@ -21,7 +21,7 @@ Dự án được xây dựng với mục tiêu mô phỏng quy trình triển k
 
 ---
 
-## 🧩 Vai trò Project Coordinator (Team Lead)
+## 🧩 Vai trò Team Lead
 
 Trong dự án này, **Team Lead** đóng vai trò trọng tâm trong việc điều phối và đảm bảo chất lượng sản phẩm.
 Các kỹ năng & nhiệm vụ chính:
