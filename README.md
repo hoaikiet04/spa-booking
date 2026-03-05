@@ -20,43 +20,6 @@
 Dự án được xây dựng với mục tiêu mô phỏng quy trình triển khai một hệ thống đặt lịch thực tế, từ phân tích yêu cầu → thiết kế DB → triển khai tính năng → kiểm thử → báo cáo.
 
 ---
-
-## 🧩 Vai trò Team Lead
-
-Trong dự án này, **Team Lead** đóng vai trò trọng tâm trong việc điều phối và đảm bảo chất lượng sản phẩm.
-Các kỹ năng & nhiệm vụ chính:
-
-### 1. Quản lý yêu cầu & lập kế hoạch (Planning & Requirement Management)
-
-* Thu thập & phân tích yêu cầu chức năng: đặt lịch, quản lý dịch vụ, quản trị, phân quyền.
-* Chuyển yêu cầu thành **backlog** rõ ràng (user stories, tính năng, deadline).
-* Lập kế hoạch theo **milestone**, phân chia giai đoạn: thiết kế, dev, test, báo cáo.
-
-### 2. Điều phối công việc & quản lý nhóm (Task Coordination)
-
-* Phân công nhiệm vụ giữa các mảng: **Frontend – Backend – Database – Tài liệu**.
-* Theo dõi tiến độ, nhắc việc, tháo gỡ vướng mắc kỹ thuật/logic cho từng thành viên.
-* Đảm bảo các phần việc ghép lại ăn khớp về giao diện, luồng dữ liệu và DB.
-
-### 3. Đảm bảo chất lượng (Quality Assurance)
-
-* Xây dựng checklist kiểm thử cho: đăng nhập, đặt lịch, quản trị, xử lý form, validation.
-* Kiểm tra tính nhất quán giữa code – giao diện – dữ liệu.
-* Ghi nhận bug, phân công fix và verify lại trước khi chốt release/báo cáo.
-
-### 4. Giao tiếp & báo cáo (Communication & Reporting)
-
-* Làm cầu nối giữa nhóm và giảng viên/khách hàng mô phỏng.
-* Chuẩn bị nội dung thuyết trình, demo flow hệ thống.
-* Tổng hợp và chuẩn hóa tài liệu: **word báo cáo, slide, prompt, hướng dẫn cài đặt**.
-
-### 5. Quản lý rủi ro & timeline (Risk & Timeline Management)
-
-* Nhận diện các rủi ro: trễ tiến độ, lỗi tích hợp, thay đổi yêu cầu.
-* Điều chỉnh phân bổ công việc khi có thành viên bận / phần việc phát sinh.
-* Đảm bảo dự án hoàn thành đúng hạn với chất lượng tốt nhất trong phạm vi.
-
----
 ## 🎥 Demo & Hình ảnh dự án
 
 ### 1. Trang chủ
@@ -223,16 +186,3 @@ Trong quá trình phát triển, nhóm áp dụng quy trình tối giản:
    * Hoàn thiện README và hướng dẫn cài đặt
 
 ---
-
-## 👨‍👩‍👧‍👦 Thành viên & phân công 
-
-* **Phạm Hoài Kiệt – Team Lead / Front-end Developer**
-
-  * Quản lý yêu cầu, phân chia task
-  * Thiết kế tổng thể kiến trúc
-  * Kiểm thử & đảm bảo chất lượng
-  * Tổng hợp báo cáo & thuyết trình
-
-* **Nguyễn Thanh Sơn / Huỳnh Minh Chương – Backend Developer**
-
-* **Trần Thị Mỹ Ngân – Database Designer / Tester**
